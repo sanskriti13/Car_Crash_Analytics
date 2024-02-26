@@ -1,0 +1,221 @@
+{
+  "analytics_1": {
+    "filepath_person_details": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Primary_Person_use.csv",
+    "function_dict": {
+      "male_filters": [
+        { "column": "PRSN_GNDR_ID", "operation": "==", "value": "MALE" }
+      ],
+      "grouping_params": [
+        {
+          "group_by_cols": "['CRASH_ID']",
+          "agg_column": "'*'",
+          "agg_operation": "'count'"
+        }
+      ],
+      "count_filters": [
+        { "column": "count(*)", "operation": ">", "value": "2" }
+      ]
+    },
+    "active_flag": "Y"
+  },
+
+  "analytics_2": {
+    "filepath_units_df": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Units_use.csv",
+    "function_dict": {
+      "vehicle_filters": [
+        {
+          "column": "VEH_BODY_STYL_ID",
+          "operation": "like",
+          "value": "%CYCLE%"
+        }
+      ],
+
+      "grouping_params": [
+        {
+          "group_by_cols": "[]",
+          "agg_column": "'VIN'",
+          "agg_operation": "'distinct_count'"
+        }
+      ]
+    },
+    "active_flag": "Y"
+  },
+  "analytics_3": {
+    "filepath_units_df": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Units_use.csv",
+    "filepath_person_details": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Primary_Person_use.csv",
+
+    "function_dict": {
+      "join_conditions": [
+        { "left_col": "l.CRASH_ID", "right_col": "r.CRASH_ID" }
+      ],
+      "vehicle_filters": [
+        {
+          "column": "VEH_BODY_STYL_ID",
+          "operation": "like",
+          "value": "%CYCLE%"
+        }
+      ],
+      "select_columns": ["r.VEH_MAKE_ID", "r.VIN"],
+
+      "driver_filters": [
+        {
+          "column": "PRSN_TYPE_ID",
+          "operation": "like",
+          "value": "%DRIVER%"
+        },
+        {
+          "column": "PRSN_AIRBAG_ID",
+          "operation": "like",
+          "value": "%NOT DEPLOYED%"
+        },
+        {
+          "column": "PRSN_INJRY_SEV_ID",
+          "operation": "==",
+          "value": "KILLED"
+        }
+      ],
+
+      "grouping_params": [
+        {
+          "group_by_cols": "[]",
+          "agg_column": "'VIN'",
+          "agg_operation": "'distinct_count'"
+        }
+      ]
+    },
+    "active_flag": "Y"
+  },
+
+  "analytics_4": {
+    "filepath_units_df": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Units_use.csv",
+    "filepath_person_details": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Primary_Person_use.csv",
+
+    "function_dict": {
+      "join_conditions": [
+        { "left_col": "l.CRASH_ID", "right_col": "r.CRASH_ID" }
+      ],
+      "select_columns": [
+        "l.CRASH_ID",
+        "r.VEH_MAKE_ID",
+        "r.VIN",
+        "l.DRVR_LIC_TYPE_ID",
+        "r.VEH_HNR_FL"
+      ],
+
+      "driver_filters": [
+        {
+          "column": "DRVR_LIC_TYPE_ID",
+          "operation": "like",
+          "value": "%DRIVER LIC%"
+        },
+        { "column": "VEH_HNR_FL", "operation": "==", "value": "Y" }
+      ],
+
+      "grouping_params": [
+        {
+          "group_by_cols": "[]",
+          "agg_column": "'VIN'",
+          "agg_operation": "'distinct_count'"
+        }
+      ]
+    },
+    "active_flag": "Y"
+  },
+  "analytics_5": {
+    "filepath_person_details": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Primary_Person_use.csv",
+
+    "function_dict": {
+      "grouping_params": [
+        {
+          "group_by_cols": "['DRVR_LIC_STATE_ID']",
+          "agg_column": "'crash_id'",
+          "agg_operation": "'count'"
+        }
+      ]
+    },
+    "active_flag": "Y"
+  },
+  "analytics_6": {
+    "filepath_units_df": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Units_use.csv",
+    "function_dict": {},
+    "active_flag": "Y"
+  },
+  "analytics_7": {
+    "filepath_units_df": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Units_use.csv",
+    "filepath_person_details": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Primary_Person_use.csv",
+
+    "function_dict": {
+      "join_conditions": [
+        { "left_col": "l.CRASH_ID", "right_col": "r.CRASH_ID" }
+      ],
+
+      "select_columns": [
+        "r.VEH_MAKE_ID",
+        "r.VIN",
+        "r.VEH_BODY_STYL_ID",
+        "l.PRSN_ETHNICITY_ID",
+        "l.crash_id"
+      ],
+
+      "driver_filters": [{ "column": "rank", "operation": "==", "value": "1" }]
+    },
+    "active_flag": "Y"
+  },
+  "analytics_8": {
+    "filepath_units_df": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Units_use.csv",
+    "filepath_person_details": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Primary_Person_use.csv",
+
+    "function_dict": {
+      "join_conditions": [
+        { "left_col": "l.CRASH_ID", "right_col": "r.CRASH_ID" }
+      ],
+
+      "select_columns": [
+        "r.CONTRIB_FACTR_1_ID",
+        "r.VIN",
+        "r.VEH_BODY_STYL_ID",
+        "l.crash_ID",
+        "r.OWNR_ZIP"
+      ],
+
+      "driver_filters": [
+        { "column": "VEH_BODY_STYL_ID", "operation": "like", "value": "%CAR%" },
+        {
+          "column": "CONTRIB_FACTR_1_ID",
+          "operation": "like",
+          "value": "%ALCOHOL%"
+        },
+        { "column": "OWNR_ZIP", "operation": "isNotNull", "value": "" }
+      ],
+
+      "grouping_params": [
+        {
+          "group_by_cols": "['OWNR_ZIP']",
+          "agg_column": "'crash_id'",
+          "agg_operation": "'distinct_count'"
+        }
+      ]
+    },
+    "active_flag": "Y"
+  },
+  "analytics_9": {
+    "filepath_units_df": "D:\\python\\Car_Crash\\Car_Crash_Analytics\\Data\\Units_use.csv",
+    
+    "function_dict": {
+    "driver_filters": [
+      { "column": "VEH_DMAG_AREA_1_ID", "operation": "==", "value": "NA" },
+      {
+        "column": "VEH_DMAG_SCL_1_ID",
+        "operation": "rlike",
+        "value": "[5-9]"
+      },
+      {
+        "column": "FIN_RESP_TYPE_ID",
+        "operation": "like",
+        "value": "%INSURANCE%"
+      }
+    ]},
+    "active_flag": "Y"
+  }
+    
+}
