@@ -21,28 +21,34 @@ How is the code working?
 
    
 4. To reduce redundancies and increase reusability, User Defined function for each basic Pyspark Operation/ Functionality have been created:
-   a.** create_spark_session :** Creation of Spark Session
+   a. **create_spark_session :** Creation of Spark Session
 
-   b.** read_csv_to_dataframe :** Read data from CSV Files
+   b. **read_csv_to_dataframe :** Read data from CSV Files
 
-   c.** drop_duplicates_from_dataframe : **Drop Duplicate Records from Dataframe
+   c. **drop_duplicates_from_dataframe** : Drop Duplicate Records from Dataframe
 
-   d.** apply_filters : **Apply filters on dataframe
+   d. **apply_filters** : Apply filters on dataframe
 
-   e. **apply_join : **Apply join between 2 data frames
+   e. **apply_join :** Apply join between 2 data frames
 
-   f.** perform_grouping :** Apply grouping operations/ Aggregations on dataframes
+   f. **perform_grouping :** Apply grouping operations/ Aggregations on dataframes
 
-   g.** dataframe_count : **Return Count of Dataframe
+   g. **dataframe_count :** Return Count of Dataframe
 
    h. **write_df_to_csv :** Return CSV File with Result Dataframe
 
 5. Problem Statments :
   a. Analytical Functions (analytics_1_fun to analytics_9_fun) have been created that leverage the above functions and some additional operations to perform the required       analysis as mentioned in the Problem Statements.
 
-  b. The Main Function : Pulls all the configurations from the Config File provided by the user and returns results for all the
+   <img width="511" alt="image" src="https://github.com/sanskriti13/Car_Crash_Analytics/assets/63180433/efda5e6a-e3f3-4aa2-a851-2e5af280cdde">
 
-Screenshots Of Outputs from Console:
+
+  b. The Main Function : Pulls all the configurations from the Config File provided by the user and returns results for all the Analytical functions.
+
+  <img width="661" alt="image" src="https://github.com/sanskriti13/Car_Crash_Analytics/assets/63180433/d50c0046-0c2c-4a34-8dd4-ecef02a5d61a">
+
+
+   **Screenshots Of Outputs from Console:**
 
    a. Analysis 1 :: Find the number of crashes (accidents) in which number of males killed are greater than 2?
 
